@@ -37,6 +37,11 @@ func fetchPage(url string) (response *http.Response) {
 	return
 }
 
+func parseFilename(url string) string {
+	components := strings.Split(url, "/")
+	return components[len(components)-1]
+}
+
 func downloadFile(filePath string, url string) error {
 	response := fetchPage(url)
 	defer response.Body.Close()
@@ -79,7 +84,6 @@ func getTunes() (songs []string) {
 				isSong := strings.HasSuffix(href, "mp3")
 
 				if isSong {
-					// fmt.Printf("Downloading: %s%s\n", baseUrl, href)
 					songs = append(songs, baseUrl+href)
 				}
 			}
@@ -88,7 +92,12 @@ func getTunes() (songs []string) {
 }
 
 func main() {
-	for _, song := range getTunes() {
-		fmt.Println(song)
+	// TODO Better Target Directory logic, aka dir creation
+	targetDir := "./output"
+
+	for _, songUrl := range getTunes() {
+		fmt.Println("Song URL:", songUrl)
+		fmt.Printf("\tFile Name:%s\n", parseFilename(songUrl))
+		downloadFile(targetDir+"/"+parseFilename(songUrl), songUrl)
 	}
 }
