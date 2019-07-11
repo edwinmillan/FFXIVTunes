@@ -92,6 +92,8 @@ func getTunes() (songs []string) {
 }
 
 func main() {
+	// TODO Coroutine downloading
+	// TODO Parametize expansion selection
 	// TODO Better Target Directory logic, aka dir creation
 	targetDir := "./output"
 
