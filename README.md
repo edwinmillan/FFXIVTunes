@@ -1,5 +1,5 @@
 # FFXIVTunes
-Uses Tylian's website to download the FFXIV songs
+Uses [Tylian's website](https://ffxiv.tylian.net) to download the FFXIV songs
 
 # Usage
 To see what options are available run the program in the cmd with -h
