@@ -147,10 +147,17 @@ func getExpansion() (expansion string) {
 func main() {
 	var outputDir string
 
+	// Ensure that the ending prompt is run at the end
+	defer func() {
+		scanner := bufio.NewScanner(os.Stdin)
+		fmt.Println("Press ENTER to continue...")
+		scanner.Scan()
+	}()
+
 	flag.StringVar(&outputDir, "o", "./output", "Directory for songs to be downloaded to")
 	flag.Parse()
 
-	fmt.Println("This unofficial tool downloads songs from https://ffxiv.tylian.net\n")
+	fmt.Printf("This unofficial tool downloads songs from https://ffxiv.tylian.net\n\n")
 	expansion := getExpansion()
 	targetDir := strings.Join([]string{outputDir, expansion}, "/")
 
@@ -170,4 +177,5 @@ func main() {
 
 	waitGroup.Wait()
 	fmt.Println("Completed!")
+
 }
