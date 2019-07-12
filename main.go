@@ -150,6 +150,7 @@ func main() {
 	flag.StringVar(&outputDir, "o", "./output", "Directory for songs to be downloaded to")
 	flag.Parse()
 
+	fmt.Println("This unofficial tool downloads songs from https://ffxiv.tylian.net\n")
 	expansion := getExpansion()
 	targetDir := strings.Join([]string{outputDir, expansion}, "/")
 
