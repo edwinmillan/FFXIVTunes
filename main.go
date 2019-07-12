@@ -114,11 +114,19 @@ func getExpansion() (expansion string) {
 		4: "ex3",
 	}
 
+	displayName := map[string]string{
+		"quit":  "Quit",
+		"ffxiv": "Final Fantasy Base Game",
+		"ex1":   "Heavensward",
+		"ex2":   "Stormblood",
+		"ex3":   "Shadowbringers",
+	}
+
 	scanner := bufio.NewScanner(os.Stdin)
 
 	fmt.Println("Enter the number of the expansion you want downloaded")
 	for key, val := range expansions {
-		fmt.Printf("[%d] %s\n", key, val)
+		fmt.Printf("[%d] %s\n", key, displayName[val])
 	}
 	fmt.Print("> ")
 	scanner.Scan()
