@@ -163,7 +163,7 @@ func main() {
 
 	if _, err := os.Stat(targetDir); os.IsNotExist(err) {
 		fmt.Println("Creating", targetDir)
-		os.MkdirAll(targetDir, os.ModeDir)
+		os.MkdirAll(targetDir, os.ModePerm)
 	}
 
 	songs := getTunes(expansion)
